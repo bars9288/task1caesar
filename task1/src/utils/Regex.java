@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Regex {
 
-    public static boolean findedByRegex(String regex, String inputString){
+    public static boolean findedByRegex(String regex, String inputString) {
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(inputString);
@@ -13,12 +13,12 @@ public class Regex {
         return (matcher.find());
     }
 
-    public static String findStringByRegex(String regex, String inputString){
+    public static String findStringByRegex(String regex, String inputString) {
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(inputString);
 
-        if (matcher.find()){
+        if (matcher.find()) {
             return matcher.group();
         }
         return null;
