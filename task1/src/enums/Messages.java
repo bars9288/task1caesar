@@ -2,6 +2,7 @@ package enums;
 
 public enum Messages {
     FINISHED("The program has stopped"),
+
     CHOOSE_LANGUAGE("Select your language, if English press 1; Выберите Ваш язык, если Русский нажмите 2"),
     CHOOSE_LANGUAGE_TRY_AGAIN("enter 1 or 2 (exit 0); Введите 1 или 2 (выйти 0)"),
 
@@ -13,6 +14,12 @@ public enum Messages {
 
     ENTER_CONSOLE_STRING_SHIFT_RUS("Введите исходные данные: в кавычках исходный текст и число смещения (пример:  \"Hello World\", shift: 3)"),
     ENTER_CONSOLE_STRING_SHIFT_ENG("Enter the source data: in quotes the source text and the offset number (example: \"Hello World\", shift: 3)"),
+
+    ENTER_CONSOLE_STRING_SHIFT_FILE_RUS("Введите абсолютный путь к файлу и смещение через пробел"),
+    ENTER_CONSOLE_STRING_SHIFT_FILE_ENG("Enter the absolute path to the file and shift with space"),
+
+    ENTER_CONSOLE_404_FILE_RUS("Файл не найден ИЛИ не распознано число смещения"),
+    ENTER_CONSOLE_404_FILE_ENG("File not found OR shift number  not recognized"),
 
     ENTER_CONSOLE_STRING_NULL_RUS("Не распознан текст"),
     ENTER_CONSOLE_SHIFT_NULL_RUS("Не распознано число"),

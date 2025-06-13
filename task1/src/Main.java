@@ -63,9 +63,9 @@ public class Main {
                 }
             } else if (numSource == 2){
                 if (numTask == 1){
-                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_ENG, Messages.ENTER_CONSOLE_STRING_NULL_ENG, Messages.ENTER_CONSOLE_SHIFT_NULL_ENG, true);
+                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_ENG, Messages.ENTER_CONSOLE_STRING_NULL_ENG, Messages.ENTER_CONSOLE_SHIFT_NULL_ENG, true);
                 } else if (numTask == 2){
-                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_ENG, Messages.ENTER_CONSOLE_STRING_NULL_ENG, Messages.ENTER_CONSOLE_SHIFT_NULL_ENG, false);
+                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_ENG, Messages.ENTER_CONSOLE_STRING_NULL_ENG, Messages.ENTER_CONSOLE_SHIFT_NULL_ENG, false);
                 }
             }
         } else if (numLanguage == 2){
@@ -77,9 +77,9 @@ public class Main {
                 }
             } else if (numSource == 2){
                 if (numTask == 1){
-                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_ENG, Messages.ENTER_CONSOLE_STRING_NULL_ENG, Messages.ENTER_CONSOLE_SHIFT_NULL_ENG, true);
+                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_RUS, Messages.ENTER_CONSOLE_STRING_NULL_ENG, Messages.ENTER_CONSOLE_SHIFT_NULL_ENG, true);
                 } else if (numTask == 2){
-                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_ENG, Messages.ENTER_CONSOLE_STRING_NULL_ENG, Messages.ENTER_CONSOLE_SHIFT_NULL_ENG, false);
+                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_RUS, Messages.ENTER_CONSOLE_STRING_NULL_ENG, Messages.ENTER_CONSOLE_SHIFT_NULL_ENG, false);
                 }
             }
         }
@@ -108,7 +108,7 @@ public class Main {
     }
 
     public static void criptingTaskFile(Messages firstFile, Messages notFoundFile, Messages notFoundInt, boolean cript){
-        System.out.println(first.get());
+        System.out.println(firstFile.get());
         String next = scanner.next();
         if (!findedByRegex("^[\\\"].*[\\\"]", next)){
             System.out.println(notFoundString.get());
@@ -123,6 +123,5 @@ public class Main {
         String result = CryptAlgorithm.crypt(inputData, (cript) ? inputShift : -inputShift);
         System.out.println("\"" + result + "\"");
     }
-
 }
 
