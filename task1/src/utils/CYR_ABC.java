@@ -7,10 +7,15 @@ class CYR_ABC {
     static HashMap<Character, Integer> CYRILIC_LOWER = new HashMap<>();
     static HashMap<Character, Integer> CYRILIC_UPPER = new HashMap<>();
 
+    // номера специально выбраны такими что бы исключить пересечение с кодом char списка unicode
     static int startNumLowerArray = 66_000;
     static int startNumUpperArray = 67_000;
 
-
+    /**
+     * Метод инициализирует алфавит с применением порядка букв традиционного русского алфавита, где буква "ё" стоит 7-м символом
+     * в отличие от UniCode где буква  "ё" стоит после буквы "я" через символ е-операнд(ударение)
+     * Т.к. нет явного указания по алфавиту, и для исключнеия ошибки буквы е-операнд(ударение) применен этот метод.
+     */
     static void init() {
         int num = startNumLowerArray;
         for (int charNum : "абвгде".chars().toArray()) {
@@ -55,7 +60,7 @@ class CYR_ABC {
     }
 
 
-    static int getIntChar(int num) {
+    static int cyrilicGetIntChar(int num) {
         if (startNumLowerArray <= num && num <= startNumLowerArray + 33) {
             return getIntCharLower(num);
         } else if (startNumUpperArray <= num && num <= startNumUpperArray + 33) {

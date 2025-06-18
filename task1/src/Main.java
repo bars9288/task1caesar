@@ -54,40 +54,35 @@ public class Main {
     }
 
     public static void createTask(int numLanguage, int numSource, int numTask){
-        if (numLanguage == 1){
-            if (numSource == 1){
-                if (numTask == 1){
+        if (numLanguage == 1){ // English
+            if (numSource == 1){ // Console input
+                if (numTask == 1){ // Cript
                     criptingTask(Messages.ENTER_CONSOLE_STRING_SHIFT_ENG, Messages.ENTER_CONSOLE_STRING_NULL_ENG, Messages.ENTER_CONSOLE_SHIFT_NULL_ENG, true);
-                } else if (numTask == 2){
+                } else if (numTask == 2){ // DeCript
                     criptingTask(Messages.ENTER_CONSOLE_STRING_SHIFT_ENG, Messages.ENTER_CONSOLE_STRING_NULL_ENG, Messages.ENTER_CONSOLE_SHIFT_NULL_ENG, false);
                 }
-            } else if (numSource == 2){
-                if (numTask == 1){
-                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_ENG, Messages.ENTER_CONSOLE_STRING_NULL_ENG, Messages.ENTER_CONSOLE_SHIFT_NULL_ENG, true);
-                } else if (numTask == 2){
-                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_ENG, Messages.ENTER_CONSOLE_STRING_NULL_ENG, Messages.ENTER_CONSOLE_SHIFT_NULL_ENG, false);
+            } else if (numSource == 2){ // File input
+                if (numTask == 1){ // Cript
+                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_ENG, Messages.ENTER_CONSOLE_404_FILE_ENG, true);
+                } else if (numTask == 2){ // DeCript
+                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_ENG, Messages.ENTER_CONSOLE_STRING_NULL_ENG, false);
                 }
             }
-        } else if (numLanguage == 2){
-            if (numSource == 1){
-                if (numTask == 1){
+        } else if (numLanguage == 2){ // Russian
+            if (numSource == 1){ // Console input
+                if (numTask == 1){ // Cript
                     criptingTask(Messages.ENTER_CONSOLE_STRING_SHIFT_RUS, Messages.ENTER_CONSOLE_STRING_NULL_RUS, Messages.ENTER_CONSOLE_SHIFT_NULL_RUS, true);
-                } else if (numTask == 2){
+                } else if (numTask == 2){ // DeCript
                     criptingTask(Messages.ENTER_CONSOLE_STRING_SHIFT_RUS, Messages.ENTER_CONSOLE_STRING_NULL_RUS, Messages.ENTER_CONSOLE_SHIFT_NULL_RUS, false);
                 }
-            } else if (numSource == 2){
-                if (numTask == 1){
-                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_RUS, Messages.ENTER_CONSOLE_STRING_NULL_ENG, Messages.ENTER_CONSOLE_SHIFT_NULL_ENG, true);
-                } else if (numTask == 2){
-                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_RUS, Messages.ENTER_CONSOLE_STRING_NULL_ENG, Messages.ENTER_CONSOLE_SHIFT_NULL_ENG, false);
+            } else if (numSource == 2){ // File input
+                if (numTask == 1){ // Cript
+                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_RUS, Messages.ENTER_CONSOLE_404_FILE_RUS, true);
+                } else if (numTask == 2){ // DeCript
+                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_RUS, Messages.ENTER_CONSOLE_404_FILE_RUS, false);
                 }
             }
         }
-
-
-        System.out.println(numLanguage);
-        System.out.println(numSource);
-        System.out.println(numTask);
     }
 
     public static void criptingTask(Messages first, Messages notFoundString, Messages notFoundInt, boolean cript){
@@ -107,15 +102,15 @@ public class Main {
         System.out.println("\"" + result + "\"");
     }
 
-    public static void criptingTaskFile(Messages firstFile, Messages notFoundFile, Messages notFoundInt, boolean cript){
+    public static void criptingTaskFile(Messages firstFile, Messages notFoundFileDigit, boolean cript){
         System.out.println(firstFile.get());
         String next = scanner.next();
         if (!findedByRegex("^[\\\"].*[\\\"]", next)){
-            System.out.println(notFoundString.get());
+            System.out.println(notFoundFileDigit.get());
             return;
         }
         if (!findedByRegex("[\\d]+$", next)){
-            System.out.println(notFoundInt.get());
+            System.out.println(notFoundFileDigit.get());
             return;
         }
         String inputData = findStringByRegex("^[\\\"].*[\\\"]", next);

@@ -26,6 +26,7 @@ public enum Messages {
 
     ENTER_CONSOLE_STRING_NULL_ENG("Text not recognized"),
     ENTER_CONSOLE_SHIFT_NULL_ENG("Number not recognized"),
+
     A("A");
     private String message;
 

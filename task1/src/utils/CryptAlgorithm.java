@@ -63,7 +63,7 @@ public class CryptAlgorithm {
             if (!isCirilic) {
                 return charUnicodeNum + shift;
             } else {
-                return getIntChar(charUnicodeNum + shift);
+                return cyrilicGetIntChar(charUnicodeNum + shift);
             }
         } else {
             int delta = (charUnicodeNum + shift) - AbcArray[AbcArray.length - 1];
@@ -71,7 +71,7 @@ public class CryptAlgorithm {
             if (!isCirilic) {
                 return AbcArray[ost - 1];
             } else {
-                return getIntChar(AbcArray[ost - 1]);
+                return cyrilicGetIntChar(AbcArray[ost - 1]);
             }
         }
     }
