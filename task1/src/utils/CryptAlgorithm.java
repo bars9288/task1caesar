@@ -71,6 +71,9 @@ public class CryptAlgorithm {
                 return (isCirilic) ? cyrilicGetIntChar(charUnicodeNum + shift) : charUnicodeNum + shift;
             } else {
                 int countStepsRight = shift % AbcArray.length;
+                if (countStepsRight + charUnicodeNum <= AbcArray[AbcArray.length - 1]){
+                    return (isCirilic) ? cyrilicGetIntChar(countStepsRight + charUnicodeNum) : countStepsRight + charUnicodeNum;
+                }
                 countStepsRight = countStepsRight - ( AbcArray[AbcArray.length - 1] - charUnicodeNum) - 1;
                 return (isCirilic) ? cyrilicGetIntChar(AbcArray[countStepsRight]) : AbcArray[countStepsRight];
             }
@@ -79,19 +82,14 @@ public class CryptAlgorithm {
                 return (isCirilic) ? cyrilicGetIntChar(charUnicodeNum + shift) : charUnicodeNum + shift;
             } else {
                 int countStepsLeft = -shift % AbcArray.length;
+                if (charUnicodeNum - countStepsLeft >= AbcArray[0]){
+                    return (isCirilic) ? cyrilicGetIntChar(AbcArray[countStepsLeft - 1]) : AbcArray[countStepsLeft - 1];
+                }
                 countStepsLeft = countStepsLeft - (charUnicodeNum - AbcArray[0]);
                 countStepsLeft = AbcArray.length - countStepsLeft;
                 return (isCirilic) ? cyrilicGetIntChar(AbcArray[countStepsLeft]) : AbcArray[countStepsLeft];
             }
         }
     }
-
-    public static void main(String[] args) {
-//        shiftChar('z',0, CryptAlgorithm.LATINIC_LOWER,false);
-        char i = (char) checkAbcUpperLowerRange('а',-34);
-        System.out.println(i);
-
-    }
-
 }
 

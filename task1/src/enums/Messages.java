@@ -18,8 +18,8 @@ public enum Messages {
     ENTER_CONSOLE_STRING_SHIFT_FILE_RUS("Введите абсолютный путь к файлу и смещение через пробел"),
     ENTER_CONSOLE_STRING_SHIFT_FILE_ENG("Enter the absolute path to the file and shift with space"),
 
-    ENTER_CONSOLE_404_FILE_RUS("Файл не найден ИЛИ не распознано число смещения"),
-    ENTER_CONSOLE_404_FILE_ENG("File not found OR shift number  not recognized"),
+    ENTER_CONSOLE_404_FILE_RUS("Файл не найден (адрес не распознан) ИЛИ не распознано число смещения"),
+    ENTER_CONSOLE_404_FILE_ENG("File not found (path not recognized) OR shift number  not recognized"),
 
     ENTER_CONSOLE_STRING_NULL_RUS("Не распознан текст"),
     ENTER_CONSOLE_SHIFT_NULL_RUS("Не распознано число"),

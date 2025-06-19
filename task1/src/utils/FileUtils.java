@@ -12,7 +12,9 @@ public class FileUtils {
     public static List<String> printLargeFileContents(String absoluteFilePath) throws IOException {
 
         if (new File(absoluteFilePath).isFile()){
-            return Files.lines(Path.of(absoluteFilePath)).toList();
+            try(Stream<String> lines = Files.lines(Path.of(absoluteFilePath))){
+                return lines.toList();
+            }
         }
             return null;
     }

@@ -1,10 +1,15 @@
 import enums.Messages;
 import utils.CryptAlgorithm;
+import utils.FileUtils;
 
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 import static utils.CheckConsoleMessage.readCorrectIntegerConsole;
+import static utils.FileUtils.printLargeFileContents;
 import static utils.Regex.*;
 
 public class Main {
@@ -65,7 +70,7 @@ public class Main {
                 if (numTask == 1){ // Cript
                     criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_ENG, Messages.ENTER_CONSOLE_404_FILE_ENG, true);
                 } else if (numTask == 2){ // DeCript
-                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_ENG, Messages.ENTER_CONSOLE_STRING_NULL_ENG, false);
+                    criptingTaskFile(Messages.ENTER_CONSOLE_STRING_SHIFT_FILE_ENG, Messages.ENTER_CONSOLE_404_FILE_ENG, false);
                 }
             }
         } else if (numLanguage == 2){ // Russian
@@ -87,7 +92,7 @@ public class Main {
 
     public static void criptingTask(Messages first, Messages notFoundString, Messages notFoundInt, boolean cript){
         System.out.println(first.get());
-        scanner.nextLine();
+        scanner.nextLine();  // не баг а фича - что бы скинуть перенос строки от прошлого nextInt
         String next = scanner.nextLine();
         if (!findedByRegex("^[\\\"].*[\\\"]", next)){
             System.out.println(notFoundString.get());
@@ -95,19 +100,20 @@ public class Main {
         }
         if (!findedByRegex("[\\d]+$", next)){
             System.out.println(notFoundInt.get());
+
             return;
         }
         String inputData = findStringByRegex("^[\\\"].*[\\\"]", next);
         int inputShift = Integer.parseInt(Objects.requireNonNull(findStringByRegex("[\\d]+$", next)));
         String result = CryptAlgorithm.crypt(inputData, (cript) ? inputShift : -inputShift);
-        System.out.println("\"" + result + "\"");
+        System.out.println(result);
     }
 
     public static void criptingTaskFile(Messages firstFile, Messages notFoundFileDigit, boolean cript){
         System.out.println(firstFile.get());
-        scanner.nextLine();
+        scanner.nextLine(); // не баг а фича - что бы скинуть перенос строки от прошлого nextInt
         String next = scanner.nextLine();
-        if (!findedByRegex("^[\\\"].*[\\\"]", next)){
+        if (!findedByRegex("^.*[.][\\w\\d]+", next)){
             System.out.println(notFoundFileDigit.get());
             return;
         }
@@ -115,10 +121,18 @@ public class Main {
             System.out.println(notFoundFileDigit.get());
             return;
         }
-        String inputData = findStringByRegex("^[\\\"].*[\\\"]", next);
+        String inputData = findStringByRegex("^.*[.][\\w\\d]+", next);
         int inputShift = Integer.parseInt(Objects.requireNonNull(findStringByRegex("[\\d]+$", next)));
-        String result = CryptAlgorithm.crypt(inputData, (cript) ? inputShift : -inputShift);
-        System.out.println("\"" + result + "\"");
+        List<String> strings = Collections.emptyList();
+        try {
+            strings = printLargeFileContents(inputData);
+        } catch (IOException e) {
+            System.out.println(notFoundFileDigit.get());
+        }
+        strings.forEach(s -> {
+            String crypt = CryptAlgorithm.crypt(s, (cript) ? inputShift : -inputShift);
+            System.out.println(crypt);
+        });
     }
 }
 
