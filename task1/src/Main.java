@@ -87,7 +87,8 @@ public class Main {
 
     public static void criptingTask(Messages first, Messages notFoundString, Messages notFoundInt, boolean cript){
         System.out.println(first.get());
-        String next = scanner.next();
+        scanner.nextLine();
+        String next = scanner.nextLine();
         if (!findedByRegex("^[\\\"].*[\\\"]", next)){
             System.out.println(notFoundString.get());
             return;
@@ -104,7 +105,8 @@ public class Main {
 
     public static void criptingTaskFile(Messages firstFile, Messages notFoundFileDigit, boolean cript){
         System.out.println(firstFile.get());
-        String next = scanner.next();
+        scanner.nextLine();
+        String next = scanner.nextLine();
         if (!findedByRegex("^[\\\"].*[\\\"]", next)){
             System.out.println(notFoundFileDigit.get());
             return;
