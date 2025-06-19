@@ -35,9 +35,10 @@ public class CryptAlgorithm {
     }
 
     /**
-     *  Метод возвращает Char смещенный по шифру Цезаря в чистом виде из набора Юникод в зависимости от принадлежности к алфавиту
+     * Метод возвращает Char смещенный по шифру Цезаря в чистом виде из набора Юникод в зависимости от принадлежности к алфавиту
+     *
      * @param charUnicodeNum - Char в чистом виде из набора Юникод переданный на обработку
-     * @param shift - смещение
+     * @param shift          - смещение
      * @return
      */
     public static int checkAbcUpperLowerRange(int charUnicodeNum, int shift) {
@@ -64,25 +65,25 @@ public class CryptAlgorithm {
 
 
     public static int shiftChar(int charUnicodeNum, int shift, int[] AbcArray, boolean isCirilic) {
-        if (shift == 0 || shift % AbcArray.length == 0){
+        if (shift == 0 || shift % AbcArray.length == 0) {
             return (isCirilic) ? cyrilicGetIntChar(charUnicodeNum) : charUnicodeNum;
-        } else if (shift > 0){
-            if (charUnicodeNum + shift <= AbcArray[AbcArray.length - 1]){
+        } else if (shift > 0) {
+            if (charUnicodeNum + shift <= AbcArray[AbcArray.length - 1]) {
                 return (isCirilic) ? cyrilicGetIntChar(charUnicodeNum + shift) : charUnicodeNum + shift;
             } else {
                 int countStepsRight = shift % AbcArray.length;
-                if (countStepsRight + charUnicodeNum <= AbcArray[AbcArray.length - 1]){
+                if (countStepsRight + charUnicodeNum <= AbcArray[AbcArray.length - 1]) {
                     return (isCirilic) ? cyrilicGetIntChar(countStepsRight + charUnicodeNum) : countStepsRight + charUnicodeNum;
                 }
-                countStepsRight = countStepsRight - ( AbcArray[AbcArray.length - 1] - charUnicodeNum) - 1;
+                countStepsRight = countStepsRight - (AbcArray[AbcArray.length - 1] - charUnicodeNum) - 1;
                 return (isCirilic) ? cyrilicGetIntChar(AbcArray[countStepsRight]) : AbcArray[countStepsRight];
             }
         } else {
-            if (charUnicodeNum + shift >= AbcArray[0]){
+            if (charUnicodeNum + shift >= AbcArray[0]) {
                 return (isCirilic) ? cyrilicGetIntChar(charUnicodeNum + shift) : charUnicodeNum + shift;
             } else {
                 int countStepsLeft = -shift % AbcArray.length;
-                if (charUnicodeNum - countStepsLeft >= AbcArray[0]){
+                if (charUnicodeNum - countStepsLeft >= AbcArray[0]) {
                     return (isCirilic) ? cyrilicGetIntChar(AbcArray[countStepsLeft - 1]) : AbcArray[countStepsLeft - 1];
                 }
                 countStepsLeft = countStepsLeft - (charUnicodeNum - AbcArray[0]);

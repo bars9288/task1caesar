@@ -23,10 +23,11 @@ public enum Messages {
 
     ENTER_CONSOLE_STRING_NULL_RUS("Не распознан текст"),
     ENTER_CONSOLE_SHIFT_NULL_RUS("Не распознано число"),
-
     ENTER_CONSOLE_STRING_NULL_ENG("Text not recognized"),
     ENTER_CONSOLE_SHIFT_NULL_ENG("Number not recognized"),
 
+    GET_15_DECRYPT_RUS("Не указано число смещения. Указаны ближайшие 20 вариантов"),
+    GET_15_DECRYPT_ENG("Undefined offset value. Specified visitors 20 variants"),
     A("A");
     private String message;
 
