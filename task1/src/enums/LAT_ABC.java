@@ -1,7 +1,5 @@
 package enums;
 
-import java.util.*;
-
 public enum LAT_ABC {
     LATINIC("abcdefghijklmnopqrstuvwxyz".chars().toArray()),
     LATINIC_UPPER("abcdefghijklmnopqrstuvwxyz".toUpperCase().chars().toArray());

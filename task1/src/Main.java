@@ -1,6 +1,5 @@
 import enums.Messages;
 import utils.CryptAlgorithm;
-import utils.FileUtils;
 
 import java.io.IOException;
 import java.util.Collections;
